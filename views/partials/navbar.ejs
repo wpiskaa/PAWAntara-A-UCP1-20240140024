@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+
+  <!-- Header & Semantic Navbar -->
+  <header class="sticky top-0 z-50 glass-nav">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Navigasi Utama">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Logo -->
+        <a href="/" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-200">
+            <i class="fa-solid fa-basket-shopping text-lg"></i>
+          </div>
+          <div>
+            <span class="font-extrabold text-lg text-white tracking-wide block leading-none">Toko Ariesta</span>
+            <span class="text-[11px] text-emerald-400 font-medium tracking-wider">Sembako & Kebutuhan</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="/" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors <%= page === 'home' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800' %>">
+            <i class="fa-solid fa-house mr-1.5 text-xs"></i>Beranda
+          </a>
+          <a href="/produk" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors <%= page === 'produk' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800' %>">
+            <i class="fa-solid fa-store mr-1.5 text-xs"></i>Katalog Produk
+          </a>
+          <a href="/tanya-ai" class="px-3.5 py-2 rounded-lg text-sm font-medium transition-colors <%= page === 'tanya-ai' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'text-slate-300 hover:text-white hover:bg-slate-800' %>">
+            <i class="fa-solid fa-robot mr-1.5 text-xs text-teal-400"></i>Tanya AI
+          </a>
+        </div>
+
+        <!-- Auth CTA & Admin Link -->
+        <div class="hidden md:flex items-center gap-3">
+          <% if (user) { %>
+            <a href="/admin/dashboard" class="px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md shadow-emerald-600/20 flex items-center gap-2">
+              <i class="fa-solid fa-gauge-high"></i> Dashboard Kasir
+            </a>
+          <% } else { %>
+            <a href="/login" class="px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 hover:border-emerald-500/50 hover:bg-slate-800 text-slate-200 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-right-to-bracket text-emerald-400"></i> Login Admin
+            </a>
+          <% } %>
+        </div>
+
+        <!-- Mobile Hamburger Button (Functional via JS) -->
+        <div class="md:hidden flex items-center">
+          <button id="nav-toggle-btn" type="button" aria-expanded="false" aria-label="Buka menu navigasi" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 py-3 space-y-1 fade-in">
+        <a href="/" class="block px-4 py-2 rounded-lg text-sm font-medium <%= page === 'home' ? 'bg-emerald-600/20 text-emerald-400 font-semibold' : 'text-slate-300 hover:bg-slate-800' %>">
+          <i class="fa-solid fa-house w-6"></i> Beranda
+        </a>
+        <a href="/produk" class="block px-4 py-2 rounded-lg text-sm font-medium <%= page === 'produk' ? 'bg-emerald-600/20 text-emerald-400 font-semibold' : 'text-slate-300 hover:bg-slate-800' %>">
+          <i class="fa-solid fa-store w-6"></i> Katalog Produk
+        </a>
+        <a href="/tanya-ai" class="block px-4 py-2 rounded-lg text-sm font-medium <%= page === 'tanya-ai' ? 'bg-emerald-600/20 text-emerald-400 font-semibold' : 'text-slate-300 hover:bg-slate-800' %>">
+          <i class="fa-solid fa-robot w-6 text-teal-400"></i> Tanya AI
+        </a>
+        <div class="pt-2 border-t border-slate-800">
+          <% if (user) { %>
+            <a href="/admin/dashboard" class="block px-4 py-2 rounded-lg text-sm font-semibold bg-emerald-600 text-white text-center">
+              <i class="fa-solid fa-gauge-high mr-2"></i> Dashboard Admin
+            </a>
+          <% } else { %>
+            <a href="/login" class="block px-4 py-2 rounded-lg text-sm font-semibold bg-slate-800 text-slate-200 text-center hover:bg-slate-700">
+              <i class="fa-solid fa-right-to-bracket mr-2 text-emerald-400"></i> Login Admin / Kasir
+            </a>
+          <% } %>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="flex-grow">

@@ -1,0 +1,23 @@
+{
+  "name": "toko-sembako-ariesta",
+  "version": "1.0.0",
+  "description": "Website & REST API Toko Sembako Ariesta dengan Fitur Tanya AI - UCP 1 PAW",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["express", "ejs", "rest-api", "toko-sembako", "ucp1-paw"],
+  "author": "Mahasiswa PAW",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
