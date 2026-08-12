@@ -6,8 +6,8 @@ Proyek UCP 1 Pemrograman Aplikasi Web (PAW) — Aplikasi web full-stack berbasis
 
 ## 👤 Informasi Mahasiswa
 
-- **Nama**: [Nama Mahasiswa]
-- **NIM**: 20220140020
+- **Nama**: wpiskaa
+- **NIM**: 20240140024
 - **Kelas**: PAW Antara - Kelas A
 - **Dosen Pengampu**: Ir. Asroni, S.T., M.Eng.
 - **Asisten Dosen**: Rizki Ramadan, Reza Azhari
