@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const db = require('../database/init');
+const { requireAuth } = require('../middlewares/auth');
 
 // POST /api/login
 router.post('/login', (req, res) => {
@@ -56,7 +57,7 @@ router.post('/login', (req, res) => {
 });
 
 // POST /api/logout
-router.post('/logout', (req, res) => {
+router.post('/logout', requireAuth, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return res.status(500).json({

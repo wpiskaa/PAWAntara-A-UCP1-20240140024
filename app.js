@@ -5,7 +5,7 @@ const logger = require('./middlewares/logger');
 
 // Import Routes
 const viewRoutes = require('./routes/views.routes');
-const apiAuthRoutes = require('./api/auth' in {} ? './routes/api.auth' : './routes/api.auth');
+const apiAuthRoutes = require('./routes/api.auth');
 const apiProductsRoutes = require('./routes/api.products');
 const apiChatRoutes = require('./routes/api.chat');
 
