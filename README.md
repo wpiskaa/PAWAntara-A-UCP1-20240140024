@@ -6,7 +6,7 @@ Proyek UCP 1 Pemrograman Aplikasi Web (PAW) — Aplikasi web full-stack berbasis
 
 ## 👤 Informasi Mahasiswa
 
-- **Nama**: wpiskaa
+- **Nama**: Hafiz Kurniawan
 - **NIM**: 20240140024
 - **Kelas**: PAW Antara - Kelas A
 - **Dosen Pengampu**: Ir. Asroni, S.T., M.Eng.
